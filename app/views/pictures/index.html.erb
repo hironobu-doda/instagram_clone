@@ -15,7 +15,9 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
-        <td><%= picture.image %></td>
+        <% if picture.image.url %>
+            <td><%= image_tag (picture.image.url) %></td>
+        <% end %>
         <td><%= picture.title %></td>
         <td><%= picture.content %></td>
         <td><%= link_to 'Show', picture %></td>
