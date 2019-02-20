@@ -5,7 +5,7 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @pictures = Picture.all
-    @picture = Picture.last
+    # @picture = Picture.last
     # @picture.user_id = current_user.id
   end
 
@@ -28,6 +28,7 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
 
     respond_to do |format|
       if @picture.save
