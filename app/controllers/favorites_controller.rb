@@ -1,8 +1,8 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorites = current_user.favorites
-    @favorite = Favorite.last
+    @favorites = Favorite.all
+    # @favorite = Favorite.last
     # @picture.user_id = current_user.id
   end
 

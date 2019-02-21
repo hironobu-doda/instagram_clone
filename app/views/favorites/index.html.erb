@@ -20,7 +20,7 @@
         <% if favorite.picture.image.url %>
             <td><%= image_tag (favorite.picture.image.url) %></td>
         <% end %>
-        <td>投稿者：<%= @favorite.user.name %></td>
+        <td>投稿者：<%= favorite.picture.user.name %></td>
         <td><%= favorite.picture.title %></td>
         <td><%= favorite.picture.content %></td>
         <td><%= link_to 'Show', favorite.picture %></td>
