@@ -33,6 +33,7 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
+        ContactMailer.contact_mail(@picture).deliver
         format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else
@@ -67,6 +68,7 @@ class PicturesController < ApplicationController
   end
 
   private
+
     def ensure_correct_user
       @picture = Picture.find_by(id: params[:id])
       if current_user.id != @picture.user_id
