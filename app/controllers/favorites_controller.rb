@@ -1,9 +1,10 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorites = Favorite.all
+    @user = current_user
+    @favorites = Favorite.where(user_id: @user.id).all
     # @favorite = Favorite.last
-    # @picture.user_id = current_user.id
+    # @favorites.current_user.id
   end
 
   def create
