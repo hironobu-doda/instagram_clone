@@ -24,8 +24,6 @@
         <td><%= favorite.picture.title %></td>
         <td><%= favorite.picture.content %></td>
         <td><%= link_to 'Show', favorite.picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(favorite.picture) %></td>
-        <td><%= link_to 'Destroy', favorite.picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
