@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<td><%= @picture.user.name %>さんのページ</td>
+<% if @picture.user.profile_image.url %>
+    <td><%= image_tag (@picture.user.profile_image.url) %></td>
+<% end %>
+<td><%= @picture.user.profile_content %></td>
+
+
+
 <h1>投稿一覧</h1>
 
 <td><%= link_to 'お気に入り画面へGO!!', favorites_path %></td>

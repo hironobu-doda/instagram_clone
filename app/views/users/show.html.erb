@@ -19,7 +19,9 @@
 
 <p>
   <strong>Profile image:</strong>
-  <%= image_tag @user.profile_image.url %>
+  <% if @user.profile_image.url %>
+    <%= image_tag @user.profile_image.url %>
+  <% end %>
 </p>
 
 <p>
