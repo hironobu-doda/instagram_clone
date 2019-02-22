@@ -2,12 +2,12 @@
   <p id="notice"><%= notice %></p>
 
 
-  <h2><%= @picture.user.name %>さんのページ</h2>
+  <h2><%= current_user.name %>さんのページ</h2>
   <ul class="row">
-    <% if @picture.user.profile_image.url %>
-        <td class="col-xs-4"><%= image_tag (@picture.user.profile_image.url) %></td>
+    <% if current_user.profile_image.url %>
+        <td class="col-xs-4"><%= image_tag (current_user.profile_image.url) %></td>
     <% end %>
-    <td class="col-xs-8"><%= @picture.user.profile_content %></td>
+    <td class="col-xs-8"><%= current_user.profile_content %></td>
   </ul>
 
 
@@ -45,7 +45,7 @@
             <li><%= picture.content %></li>
             <li class="col-xs-4"><%= link_to '確認', picture %></li>
 
-            <% if @picture.user_id == picture.user.id %>
+            <% if current_user.id == picture.user.id %>
               <li class="col-xs-4"><%= link_to '編集', edit_picture_path(picture) %></li>
               <li class="col-xs-4"><%= link_to '削除', picture, method: :delete, data: { confirm: '本当に削除しますか?' } %></li>
             <% end %>
