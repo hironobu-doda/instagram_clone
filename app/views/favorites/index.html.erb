@@ -3,7 +3,7 @@
 
   <h1>お気に入り</h1>
 
-  <%= link_to '一覧画面へ', pictures_path %>
+  <ul><%= link_to '一覧画面へ', pictures_path %></ul>
 
   <table>
     <thead>
@@ -18,21 +18,25 @@
     <tbody>
       <% @favorites.each do |favorite| %>
 
-        <ul class="row row2">
+        <div class="col-md-6">
 
-          <li><h3>投稿者：<%= favorite.picture.user.name %></h3></li>
-          <% if favorite.picture.image.url %>
-              <li><%= image_tag (favorite.picture.image.url) %></li>
-          <% end %>
-          <li>タイトル：<%= favorite.picture.title %></li>
-          <li><%= favorite.picture.content %></li>
-          <li><%= link_to '確認', favorite.picture %></li>
-        </ul>
+          <ul class="row row2">
+
+            <li><h3>投稿者：<%= favorite.picture.user.name %></h3></li>
+            <% if favorite.picture.image.url %>
+                <li><%= image_tag (favorite.picture.image.url) %></li>
+            <% end %>
+            <li>タイトル：<%= favorite.picture.title %></li>
+            <li><%= favorite.picture.content %></li>
+            <li><%= link_to '確認', favorite.picture %></li>
+          </ul>
+
+        </div>
+
       <% end %>
     </tbody>
   </table>
 
   <br>
 
-  <%= link_to '一覧画面へ', pictures_path %>
 </div>

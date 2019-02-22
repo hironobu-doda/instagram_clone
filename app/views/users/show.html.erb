@@ -1,32 +1,25 @@
-<p id="notice"><%= notice %></p>
-
 <td><%= link_to '投稿画面へGO!!', pictures_path %></td>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名前:</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>Mail:</strong>
+  <strong>メール:</strong>
   <%= @user.mail %>
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Profile image:</strong>
+  <strong>プロフィール画像:</strong>
   <% if @user.profile_image.url %>
     <%= image_tag @user.profile_image.url %>
   <% end %>
 </p>
 
 <p>
-  <strong>Profile content:</strong>
+  <strong>プロフィール内容:</strong>
   <%= @user.profile_content %>
 </p>
 
-<td><%= link_to 'Edit', edit_user_path %></td>
+<td><%= link_to '編集', edit_user_path %></td>

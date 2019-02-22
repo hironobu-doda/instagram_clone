@@ -34,7 +34,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.save
         ContactMailer.contact_mail(@picture).deliver
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to @picture, notice: '新しく投稿されました' }
         format.json { render :show, status: :created, location: @picture }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class PicturesController < ApplicationController
   def update
     respond_to do |format|
       if @picture.update(picture_params)
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+        format.html { redirect_to @picture, notice: '削除されました' }
         format.json { render :show, status: :ok, location: @picture }
       else
         format.html { render :edit }
