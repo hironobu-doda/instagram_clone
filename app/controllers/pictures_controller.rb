@@ -46,7 +46,7 @@ class PicturesController < ApplicationController
   def update
     respond_to do |format|
       if @picture.update(picture_params)
-        format.html { redirect_to @picture, notice: '削除されました' }
+        format.html { redirect_to @picture, notice: '更新されました' }
         format.json { render :show, status: :ok, location: @picture }
       else
         format.html { render :edit }
