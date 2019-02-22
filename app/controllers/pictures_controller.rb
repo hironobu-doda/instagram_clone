@@ -60,27 +60,27 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     respond_to do |format|
-      format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
+      format.html { redirect_to pictures_url, notice: '削除されました' }
       format.json { head :no_content }
     end
   end
 
   private
 
-    def ensure_correct_user
-      @picture = Picture.find_by(id: params[:id])
-      if current_user.id != @picture.user_id
-        redirect_to pictures_url
-      end
+  def ensure_correct_user
+    @picture = Picture.find_by(id: params[:id])
+    if current_user.id != @picture.user_id
+      redirect_to pictures_url
     end
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def picture_params
-      params.require(:picture).permit(:profile_image, :profile_content, :image, :title, :content, :image_cache)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def picture_params
+    params.require(:picture).permit(:profile_image, :profile_content, :image, :title, :content, :image_cache)
+  end
 end
