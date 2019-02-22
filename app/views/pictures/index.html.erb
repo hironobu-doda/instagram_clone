@@ -1,51 +1,59 @@
-<p id="notice"><%= notice %></p>
-
-<td><%= @picture.user.name %>さんのページ</td>
-<% if @picture.user.profile_image.url %>
-    <td><%= image_tag (@picture.user.profile_image.url) %></td>
-<% end %>
-<td><%= @picture.user.profile_content %></td>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
 
-
-<h1>投稿一覧</h1>
-
-<td><%= link_to 'お気に入り画面へGO!!', favorites_path %></td>
-<%= link_to '新規投稿', new_picture_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>name</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pictures.each do |picture| %>
-      <tr>
-        <% if picture.image.url %>
-            <td><%= image_tag (picture.image.url) %></td>
-        <% end %>
-
-
-        <td>投稿者：<%= picture.user.name %></td>
-        <td><%= picture.title %></td>
-        <td><%= picture.content %></td>
-        <td><%= link_to 'Show', picture %></td>
-
-        <% if @picture.user_id == picture.user.id %>
-          <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-          <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+  <h2><%= @picture.user.name %>さんのページ</h2>
+  <ul class="row">
+    <% if @picture.user.profile_image.url %>
+        <td class="col-xs-4"><%= image_tag (@picture.user.profile_image.url) %></td>
     <% end %>
-  </tbody>
-</table>
+    <td class="col-xs-8"><%= @picture.user.profile_content %></td>
+  </ul>
 
-<br>
 
-<%= link_to '新規投稿', new_picture_path %>
+
+  <h2>投稿一覧</h2>
+
+  <td><%= link_to 'お気に入り画面へGO!!', favorites_path %></td>
+  <%= link_to '新規投稿', new_picture_path %>
+
+  <table>
+    <thead>
+      <tr>
+        <!-- <th>Image</th>
+        <th>name</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th colspan="3"></th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pictures.each do |picture| %>
+
+        <ul class="row row2">
+
+          <li><h3>投稿者：<%= picture.user.name %></h3></li>
+
+          <% if picture.image.url %>
+            <li><%= image_tag (picture.image.url) %></li>
+          <% end %>
+
+          <li>タイトル:<%= picture.title %></li>
+          <li><%= picture.content %></li>
+          <li class="col-xs-4"><%= link_to '確認', picture %></li>
+
+          <% if @picture.user_id == picture.user.id %>
+            <li class="col-xs-4"><%= link_to '編集', edit_picture_path(picture) %></li>
+            <li class="col-xs-4"><%= link_to '削除', picture, method: :delete, data: { confirm: '本当に削除しますか?' } %></li>
+          <% end %>
+        </ul>
+
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to '新規投稿', new_picture_path %>
+</div>

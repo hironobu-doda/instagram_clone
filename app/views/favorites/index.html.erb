@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>お気に入り</h1>
+  <h1>お気に入り</h1>
 
-<%= link_to '一覧画面へ', pictures_path %>
+  <%= link_to '一覧画面へ', pictures_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @favorites.each do |favorite| %>
+  <table>
+    <thead>
       <tr>
-        <% if favorite.picture.image.url %>
-            <td><%= image_tag (favorite.picture.image.url) %></td>
-        <% end %>
-        <td>投稿者：<%= favorite.picture.user.name %></td>
-        <td><%= favorite.picture.title %></td>
-        <td><%= favorite.picture.content %></td>
-        <td><%= link_to 'Show', favorite.picture %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <!-- <th>Image</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th colspan="3"></th>
+      </tr> -->
+    </thead>
 
-<br>
+    <tbody>
+      <% @favorites.each do |favorite| %>
 
-<%= link_to '一覧画面へ', pictures_path %>
+        <ul class="row row2">
+
+          <li><h3>投稿者：<%= favorite.picture.user.name %></h3></li>
+          <% if favorite.picture.image.url %>
+              <li><%= image_tag (favorite.picture.image.url) %></li>
+          <% end %>
+          <li>タイトル：<%= favorite.picture.title %></li>
+          <li><%= favorite.picture.content %></li>
+          <li><%= link_to '確認', favorite.picture %></li>
+        </ul>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to '一覧画面へ', pictures_path %>
+</div>
