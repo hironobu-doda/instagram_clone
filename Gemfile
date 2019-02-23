@@ -30,6 +30,14 @@ group :development, :test do
   gem 'selenium-webdriver'
 
   gem 'dotenv-rails'
+
+  gem "rspec-rails"
+  gem 'spring-commands-rspec'
+  gem "factory_bot_rails"
+  gem 'faker'
+  gem "database_cleaner"
+  gem "launchy"
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -45,7 +53,7 @@ group :development do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  
+
 end
 
 
